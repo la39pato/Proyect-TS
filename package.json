@@ -1,5 +1,6 @@
 {
   "name": "proyect_ts",
+  "type": "module",
   "version": "1.0.0",
   "description": "1- registrar estudiantes : registro ,edicion , delete, cambiar estado ( activo , inactivo ) , list in table.\r datos: { id , nombre , correo , edad , carrera , estado}",
   "main": "index.js",

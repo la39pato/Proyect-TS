@@ -12,4 +12,3 @@ datos: {id,estudiante_id, curso_id , fecha , estado_inscripcion }
 5- generar estadisticas simples : total_estudiantes, total_cursos , total_inscripciones , curso_mas_estudiantes , total_estudiantes_activos , total_cursos_cerrados.
 
 tecnisismos : campos_vacios , email_valido , edad_Valida , no duplicar correos , sigla no duplicado , no repetir inscripcion . 
-
