@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripciones</title>
+
+  <link rel="stylesheet" href="../styles/scss/main.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Académico</h2>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="estudiantes.html">Estudiantes</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="inscripciones.html" class="active">Inscripciones</a>
+    </nav>
+
+    <button id="toggle-dark">Modo oscuro</button>
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="header">
+      <h1>Gestión de Inscripciones</h1>
+    </header>
+
+    <!-- FORMULARIO -->
+    <section>
+      <form id="form-inscripcion" class="form inscripcion-form">
+
+        <select id="select-estudiante" required>
+          <option value="">Seleccionar estudiante</option>
+        </select>
+
+        <select id="select-curso" required>
+          <option value="">Seleccionar curso</option>
+        </select>
+
+        <button type="submit">Inscribir</button>
+      </form>
+    </section>
+
+    <!-- TABLA -->
+    <section>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Estudiante</th>
+            <th>Curso</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabla-inscripciones"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module" src="../dist/main.js"></script>
+
+</body>
+</html>

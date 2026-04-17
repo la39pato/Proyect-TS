@@ -1,0 +1,212 @@
+@use 'variables' as v;
+
+/* ===== FILTROS ===== */
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  input,
+  select {
+    padding: 10px;
+    border-radius: v.$radius;
+    border: 1px solid v.$color-border;
+    background: v.$color-surface;
+    transition: v.$transition;
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: v.$color-primary;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  }
+}
+
+/* ===== FORM ===== */
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+
+  padding: 20px;
+  margin-bottom: 25px;
+
+  background: v.$color-surface;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-soft;
+
+  input,
+  select {
+    padding: 10px;
+    border-radius: v.$radius;
+    border: 1px solid v.$color-border;
+    transition: v.$transition;
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: v.$color-primary;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  }
+
+  button {
+    grid-column: 1 / -1;
+
+    background: linear-gradient(135deg, v.$color-primary, v.$color-secondary);
+    color: white;
+
+    border: none;
+    padding: 12px;
+    border-radius: v.$radius;
+
+    cursor: pointer;
+    transition: v.$transition;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: v.$shadow-hover;
+  }
+}
+
+/* ===== TABLA ===== */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  background: v.$color-surface;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+
+  box-shadow: v.$shadow-soft;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.table thead {
+  background: #f8f9fb;
+}
+
+.table th {
+  color: v.$color-text-light;
+}
+
+.table tbody tr {
+  border-top: 1px solid v.$color-border;
+  transition: v.$transition;
+}
+
+.table tbody tr:hover {
+  background: #f1f7ff;
+}
+
+/* ===== ESTADOS CURSO ===== */
+
+.estado {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.estado.disponible {
+  background: #eafaf1;
+  color: v.$color-success;
+}
+
+.estado.cerrado {
+  background: #fdecea;
+  color: v.$color-danger;
+}
+
+/* ===== BOTONES ===== */
+
+.table button {
+  border: none;
+  padding: 6px 10px;
+  margin-right: 5px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: v.$transition;
+}
+
+.table .edit {
+  background: #f1c40f;
+}
+
+.table .delete {
+  background: v.$color-danger;
+  color: white;
+}
+
+.table .toggle {
+  background: v.$color-success;
+  color: white;
+}
+
+/* ===== SIDEBAR ACTIVE ===== */
+
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== DARK MODE ===== */
+
+body.dark {
+
+  .filters input,
+  .filters select {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+  }
+
+  .form {
+    background: #2a2a2a;
+  }
+
+  .form input,
+  .form select {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: white;
+  }
+
+  .table {
+    background: #2a2a2a;
+  }
+
+  .table thead {
+    background: #1e1e1e;
+  }
+
+  .table tbody tr:hover {
+    background: #333;
+  }
+
+  .table th {
+    color: #aaa;
+  }
+}

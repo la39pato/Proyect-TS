@@ -1,3 +1,10 @@
-body{
-    margin:0;
+@use '../scss/index.scss';
+@use '../scss/estudiante.scss';
+@use '../scss/cursos.scss';
+@use '../scss/inscripciones.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

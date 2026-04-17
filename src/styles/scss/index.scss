@@ -1,0 +1,163 @@
+@use 'variables' as v;
+
+/* ===== BASE ===== */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: v.$color-bg;
+  color: v.$color-text;
+}
+
+/* ===== LAYOUT ===== */
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+  width: 240px;
+  background: v.$color-sidebar;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+}
+
+/* 🔧 MENOS ESPACIO ENTRE TÍTULO Y NAV */
+.sidebar h2 {
+  margin-bottom: 10px; /* antes 20px */
+  font-size: 35px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* más compacto */
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+
+  padding: 20px 10px; /* más compacto */
+  border-radius: v.$radius;
+
+  transition: v.$transition;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* botón dark  */
+#toggle-dark {
+  margin-top: auto;
+  padding: 10px;
+
+  border: none;
+  border-radius: v.$radius;
+
+  background: v.$color-primary;
+  color: white;
+
+  cursor: pointer;
+  transition: v.$transition;
+}
+
+#toggle-dark:hover {
+  background: v.$color-secondary;
+  transform: translateY(-2px);
+}
+
+/* ===== MAIN ===== */
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+/* ===== QUICK CARDS ===== */
+
+.quick-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.quick-card {
+  background: v.$color-surface;
+  padding: 25px;
+
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-soft;
+
+  text-decoration: none;
+  color: v.$color-text;
+
+  transition: v.$transition;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-card h3 {
+  font-size: 18px;
+}
+
+.quick-card p {
+  font-size: 14px;
+  color: v.$color-text-light;
+}
+
+.quick-card:hover {
+  transform: translateY(-6px);
+  box-shadow: v.$shadow-hover;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .quick-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== DARK MODE ===== */
+
+body.dark {
+  background: #121212;
+  color: white;
+
+  .main {
+    background: #1a1a1a;
+  }
+
+  .quick-card {
+    background: #2a2a2a;
+    color: white;
+  }
+
+  .quick-card p {
+    color: #aaa;
+  }
+
+  .sidebar {
+    background: #151522;
+  }
+}

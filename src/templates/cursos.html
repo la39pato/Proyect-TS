@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos</title>
+
+  <link rel="stylesheet" href="../styles/scss/main.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Académico</h2>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="estudiantes.html">Estudiantes</a>
+      <a href="cursos.html" class="active">Cursos</a>
+      <a href="inscripciones.html">Inscripciones</a>
+    </nav>
+
+    <button id="toggle-dark">Modo oscuro</button>
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="header">
+      <h1>Gestión de Cursos</h1>
+    </header>
+
+    <!-- FILTROS -->
+    <section class="filters">
+      <input id="buscar-curso" type="text" placeholder="Buscar por nombre o sigla..." />
+      
+      <select id="filtro-estado-curso">
+        <option value="">Todos</option>
+        <option value="disponible">Disponibles</option>
+        <option value="cerrado">Cerrados</option>
+      </select>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section>
+      <form id="form-curso" class="form">
+        <input name="nombre" type="text" placeholder="Nombre del curso" required />
+        <input name="sigla" type="text" placeholder="Sigla" required />
+        <input name="docente" type="text" placeholder="Docente" required />
+        <input name="cupoMaximo" type="number" placeholder="Cupo máximo" required />
+
+        <select name="estado">
+          <option value="disponible">Disponible</option>
+          <option value="cerrado">Cerrado</option>
+        </select>
+
+        <button type="submit">Guardar</button>
+      </form>
+    </section>
+
+    <!-- TABLA -->
+    <section>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Sigla</th>
+            <th>Docente</th>
+            <th>Cupo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabla-cursos"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module" src="../dist/main.js"></script>
+
+</body>
+</html>

@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Académico</title>
+
+  <link rel="stylesheet" href="../styles/scss/main.css">
 </head>
+
 <body>
-    
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Académico</h2>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="../templates/estudiantes.html">Estudiantes</a>
+      <a href="../templates/cursos.html">Cursos</a>
+      <a href="../templates/inscripciones.html">Inscripciones</a>
+    </nav>
+
+    <button id="toggle-dark">Modo oscuro</button>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="header">
+      <h1>Bienvenido</h1>
+    </header>
+
+    <section class="home">
+      <div class="quick-cards">
+
+        <a href="estudiantes.html" class="quick-card">
+          <h3>Estudiantes</h3>
+          <p>Gestionar estudiantes registrados</p>
+        </a>
+
+        <a href="cursos.html" class="quick-card">
+          <h3>Cursos</h3>
+          <p>Administrar cursos disponibles</p>
+        </a>
+
+        <a href="inscripciones.html" class="quick-card">
+          <h3>Inscripciones</h3>
+          <p>Ver y gestionar inscripciones</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+</div>
+
 </body>
 </html>
