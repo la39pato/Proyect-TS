@@ -1,0 +1,15 @@
+{
+  "name": "proyect_ts",
+  "version": "1.0.0",
+  "description": "1- registrar estudiantes : registro ,edicion , delete, cambiar estado ( activo , inactivo ) , list in table.\r datos: { id , nombre , correo , edad , carrera , estado}",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
