@@ -38,16 +38,15 @@
       <input 
         id="search" 
         type="text" 
-        placeholder="Buscar por nombre y presionar Enter..." 
+        placeholder="Buscar por nombre" 
       />
-      
+      <button id="search-btn">Buscar</button>
       <select id="filter-state">
         <option value="all">Todos</option>
         <option value="active">Activos</option>
         <option value="inactive">Inactivos</option>
       </select>
-
-      <button id="clear-filters">Clear</button>
+      <button id="clear-filters">Limpiar Filtros</button>
     </section>
 
     <!-- ERROR BUSQUEDA -->
@@ -58,27 +57,31 @@
       <form id="student-form" class="form">
 
         <div class="field">
+          <label for="name">Nombre Estudiante</label>
           <input id="name" type="text" placeholder="Nombre completo" />
           <small class="error" id="error-name"></small>
         </div>
 
         <div class="field">
+          <label for="email">Correo eletronico</label>
           <input id="email" type="email" placeholder="Correo" />
           <small class="error" id="error-email"></small>
         </div>
 
         <div class="field">
+          <label for="years">Edad</label>
           <input id="years" type="number" placeholder="Edad" />
           <small class="error" id="error-years"></small>
         </div>
 
         <div class="field">
+          <label for="career">Carrera</label>
           <input id="career" type="text" placeholder="Carrera" />
           <small class="error" id="error-career"></small>
         </div>
         <!-- BOTONES -->
-        <button type="submit">Guardar</button>
-        <button type="button" id="clear-form">Clear</button>
+        <button type="submit">Guardar Estudiante</button>
+        <button type="button" id="clear-form">Limpiar Formulario</button>
 
       </form>
     </section>
@@ -142,8 +145,9 @@
       </select>
 
       <div class="modal-actions">
-        <button type="button" id="cancel-edit">Cancelar</button>
         <button type="submit">Guardar</button>
+        <button type="button" id="cancel-edit">Cancelar</button>
+        
       </div>
     </form>
   </div>

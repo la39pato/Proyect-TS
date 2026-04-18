@@ -11,7 +11,7 @@ datos: {id,estudiante_id, curso_id , fecha , estado_inscripcion }
 tecnisismos : campos_vacios , email_valido , edad_Valida , no duplicar correos , sigla no duplicado , no repetir inscripcion . 
 
 
-// COMANDS
+// COMANDSx
 
 npx tsc -> Para TypeScript
 sass --watch src/styles/scss/main.scss:src/styles/css/main.css -> Crear css

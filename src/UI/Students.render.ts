@@ -18,10 +18,6 @@ async function validateUnique(name: string, email: string) {
     const nameExists = students.some(s => s.name.toLowerCase() === name.toLowerCase());
     const emailExists = students.some(s => s.email.toLowerCase() === email.toLowerCase());
 
-    if (nameExists) {
-        showError("name", "Este nombre ya está registrado");
-    }
-
     if (emailExists) {
         showError("email", "Este correo ya está registrado");
     }
@@ -40,10 +36,6 @@ async function validateUniqueEdit(id: number, name: string, email: string) {
         s.id !== id && s.email.toLowerCase() === email.toLowerCase()
     );
 
-    if (nameExists) {
-        showError("edit-name", "Este nombre ya está registrado");
-    }
-
     if (emailExists) {
         showError("edit-email", "Este correo ya está registrado");
     }
@@ -51,7 +43,6 @@ async function validateUniqueEdit(id: number, name: string, email: string) {
     return !(nameExists || emailExists);
 }
 
-const nameRegex = /^[A-Za-z\s]+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const careerRegex = /^[A-Za-z\s]+$/;
 
@@ -73,23 +64,22 @@ function validateForm(name: string, email: string, years: number, career: string
     clearErrors();
     let valid = true;
 
-    if (!nameRegex.test(name)) {
-        showError(`${prefix}name`, "Nombre inválido");
+    if (name.trim().length < 3) {
+        showError(`${prefix}name`, "Nombre muy corto");
         valid = false;
     }
-
     if (!emailRegex.test(email)) {
         showError(`${prefix}email`, "Correo inválido");
         valid = false;
     }
 
-    if (years < 18 || years > 25) {
-        showError(`${prefix}years`, "Edad entre 18 y 25");
+    if (years < 18 || years > 100) {
+        showError(`${prefix}years`, "Edad entre 18 y 100 años");
         valid = false;
     }
 
     if (!careerRegex.test(career)) {
-        showError(`${prefix}career`, "Carrera inválida");
+        showError(`${prefix}career`, "Carrera solo debe contener letras y espacios");
         valid = false;
     }
 
@@ -274,35 +264,52 @@ function closeModal() {
 }
 
 // ===== SEARCH =====
-searchInput.addEventListener("keydown", async (e) => {
-    if (e.key !== "Enter") return;
+const searchbutton = document.getElementById("search-btn") as HTMLButtonElement;
+
+async function handleSearch() {
+    errorSearch.textContent = "";
+
+    const name = searchInput.value.trim();
+    const students = await service.getStudents();
+
+    const found = students.filter(s => 
+        s.name.toLowerCase().includes(name.toLowerCase())
+    );
+
+    if (found.length === 0) {
+        errorSearch.textContent = "Estudiante(s) no encontrado(s)";
+        setTimeout(() => errorSearch.textContent = "", 3000);
+        return;
+    }
+
+    renderStudents(found);
+}
+
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSearch();
+});
+
+searchbutton.addEventListener("click", handleSearch);
+
+
+searchbutton.addEventListener("click", async () =>{
 
     errorSearch.textContent = "";
 
     const name = searchInput.value.trim();
     const students = await service.getStudents();
 
-    const found = students.find(s => s.name.toLowerCase() === name.toLowerCase());
+    const found = students.filter(s => s.name.toLowerCase() === name.toLowerCase());
 
-    if (!found) {
-        errorSearch.textContent = "Estudiante no encontrado";
+    if (found.length === 0) {
+        errorSearch.textContent = "Estudiante(s) no encontrado(s)";
         setTimeout(() => errorSearch.textContent = "", 3000);
         return;
     }
 
-    currentEdit = found;
-
-    editName.value = found.name;
-    editEmail.value = found.email;    
-    editYears.value = found.years.toString();
-    editCareer.value = found.career;
-    editState.value = found.state;
-
     searchInput.value = "";
 
-    backdrop.classList.remove("hidden");
-    editModal.classList.remove("hidden");
-    editModal.classList.add("active");
+    renderStudents(found);
 });
 
 // ===== FILTER =====
@@ -335,10 +342,11 @@ const toggleDarkBtn = document.getElementById("toggle-dark")!;
 toggleDarkBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 
-    // guardar preferencia
-    localStorage.setItem("theme", 
-        document.body.classList.contains("dark") ? "dark" : "light"
-    );
+    const isDark = document.body.classList.contains("dark");
+
+    toggleDarkBtn.textContent = isDark ? "Modo claro" : "Modo oscuro";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
 // cargar preferencia
