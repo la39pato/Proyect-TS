@@ -35,7 +35,7 @@ export class InscriptionService{
     async changeInscriptionStatus(inscriptionId: number, newStatus: 'pending' | 'approved' | 'rejected'): Promise<void> {
         this.inscriptions = await loadInscriptions();
         const index = this.inscriptions.findIndex(inscription => inscription.id === inscriptionId);
-        if (index !== -1) {
+        if (index !== -1 && this.inscriptions[index]) {
             this.inscriptions[index].status = newStatus;
             saveInscriptions(this.inscriptions);
         }

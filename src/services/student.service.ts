@@ -5,10 +5,14 @@ export class StudentService{
     private students: Student[] = [];
 
     async addStudent(name: string, email: string, years: number, career: string, state: "active" | "inactive"): Promise<void> {
-        const student: Student = { id: this.index++, name, email, years, career, state };
         this.students = await loadStudents();
+
+        
+        const newId = this.students.length + 1; // si no hay estudiantes length es 0, entonces el id del nuevo estudiante será 0, si hay 1 estudiante, el id del nuevo estudiante será 1, y así sucesivamente. 
+        const student: Student = { id: newId, name, email, years, career, state };
+
         this.students.push(student);
-        saveStudents(this.students);
+        await saveStudents(this.students);
     }
 
     async getStudents(): Promise<Student[]> {
@@ -59,4 +63,5 @@ export class StudentService{
         this.students = await loadStudents();
         return this.students.filter(student => student.state === "active").length;
     }
+    
 }
