@@ -1,0 +1,117 @@
+@use 'variables' as v;
+
+/* ===== GRID DE CARDS ===== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+
+.card {
+  background: v.$color-surface;
+  padding: 20px;
+
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-soft;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: v.$transition;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* barra superior decorativa */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, v.$color-primary, v.$color-secondary);
+}
+
+/* hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: v.$shadow-hover;
+}
+
+/* texto */
+
+.card h3 {
+  font-size: 14px;
+  color: v.$color-text-light;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: 600;
+  color: v.$color-text;
+}
+
+/* ===== VARIACIONES DE COLOR (opcional pero pro) ===== */
+
+.card:nth-child(1)::before {
+  background: linear-gradient(90deg, #4a90e2, #00c6ff);
+}
+
+.card:nth-child(2)::before {
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+.card:nth-child(3)::before {
+  background: linear-gradient(90deg, #f39c12, #f1c40f);
+}
+
+.card:nth-child(4)::before {
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+}
+
+.card:nth-child(5)::before {
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+}
+
+.card:nth-child(6)::before {
+  background: linear-gradient(90deg, #34495e, #2c3e50);
+}
+
+/* ===== SIDEBAR ACTIVE ===== */
+
+.sidebar a.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .card p {
+    font-size: 22px;
+  }
+}
+
+/* ===== DARK MODE ===== */
+
+body.dark {
+
+  .card {
+    background: #2a2a2a;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .card h3 {
+    color: #aaa;
+  }
+
+  .card p {
+    color: #fff;
+  }
+}

@@ -335,21 +335,3 @@ document.querySelector("#clear-filters")!.addEventListener("click", () => {
 renderStudents();
 backdrop.addEventListener("click", closeModal);
 
-// DARK MODE
-
-const toggleDarkBtn = document.getElementById("toggle-dark")!;
-
-toggleDarkBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    const isDark = document.body.classList.contains("dark");
-
-    toggleDarkBtn.textContent = isDark ? "Modo claro" : "Modo oscuro";
-
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-});
-
-// cargar preferencia
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}

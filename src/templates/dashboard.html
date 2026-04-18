@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="../styles/css/main.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Académico</h2>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="estudiantes.html">Estudiantes</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="inscripciones.html">Inscripciones</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+    </nav>
+
+    <button id="toggle-dark">Modo oscuro</button>
+  </aside>
+   <script type="module" src="/dist/UI/main.js"></script>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="header">
+      <h1>Dashboard</h1>
+    </header>
+
+    <!-- CARDS -->
+    <section class="cards">
+
+      <div class="card">
+        <h3>Total Estudiantes</h3>
+        <p id="total-estudiantes">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Cursos</h3>
+        <p id="total-cursos">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Inscripciones</h3>
+        <p id="total-inscripciones">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Curso con más inscritos</h3>
+        <p id="curso-top">-</p>
+      </div>
+
+      <div class="card">
+        <h3>Estudiantes Activos</h3>
+        <p id="estudiantes-activos">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Cursos Cerrados</h3>
+        <p id="cursos-cerrados">0</p>
+      </div>
+
+    </section>
+    
+  </main>
+
+</div>
+  <script type="module" src="/dist/UI/dashboard.js"></script>
+</body>
+</html>
