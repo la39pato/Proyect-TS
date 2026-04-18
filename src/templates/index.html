@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema Académico</title>
+  <title>Inicio</title>
 
   <link rel="stylesheet" href="../styles/css/main.css">
 </head>
@@ -15,8 +15,9 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <h2>Académico</h2>
+
     <nav>
-      <a href="index.html">Inicio</a>
+      <a href="index.html" class="active">Inicio</a>
       <a href="../templates/estudiantes.html">Estudiantes</a>
       <a href="../templates/cursos.html">Cursos</a>
       <a href="../templates/inscripciones.html">Inscripciones</a>
@@ -25,32 +26,17 @@
 
     <button id="toggle-dark">Modo oscuro</button>
   </aside>
+
   <script type="module" src="/dist/UI/main.js"></script>
+
   <!-- MAIN -->
-  <main class="main">
-    <header class="header">
-      <h1>Bienvenido</h1>
-    </header>
+  <main class="main home-main">
 
     <section class="home">
-      <div class="quick-cards">
-
-        <a href="estudiantes.html" class="quick-card">
-          <h3>Estudiantes</h3>
-          <p>Gestionar estudiantes registrados</p>
-        </a>
-
-        <a href="cursos.html" class="quick-card">
-          <h3>Cursos</h3>
-          <p>Administrar cursos disponibles</p>
-        </a>
-
-        <a href="inscripciones.html" class="quick-card">
-          <h3>Inscripciones</h3>
-          <p>Ver y gestionar inscripciones</p>
-        </a>
-      </div>
+      <h1 class="welcome-title">Bienvenido</h1>
+      <p class="welcome-sub">Sistema de Gestión Académica</p>
     </section>
+
   </main>
 
 </div>

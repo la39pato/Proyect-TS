@@ -28,7 +28,6 @@ body {
   padding: 20px;
 }
 
-/* 🔧 MENOS ESPACIO ENTRE TÍTULO Y NAV */
 .sidebar h2 {
   margin-bottom: 10px; /* antes 20px */
   font-size: 35px;
@@ -79,6 +78,27 @@ body {
 .main {
   flex: 1;
   padding: 20px;
+}
+
+.home-main {
+  background: v.$color-sidebar;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-main .welcome-title {
+  font-size: 72px;
+  color: white;
+  margin: 0;
+}
+
+.home-main .welcome-sub {
+  color: white;
+  opacity: 0.8;
+  margin-top: 10px;
 }
 
 /* ===== HEADER ===== */
