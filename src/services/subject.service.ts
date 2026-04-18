@@ -5,10 +5,15 @@ export class SubjectService{
     private subjects: Subject[] = [];
 
     async addSubject(name: string,code: string, teacher: string, MaxStudents: number, ActualStudents: number ): Promise<void> {
-        const subject: Subject = { id: this.index++, name, code, teacher, MaxStudents, ActualStudents, State: "available" };    
         this.subjects = await loadSubjects();
+
+        const newId = this.subjects.length > 0
+        ? Math.max(...this.subjects.map(s => s.id)) + 1
+        : 1;
+        const subject: Subject = { id: newId, name, code, teacher, MaxStudents, ActualStudents, State: "available" };
+
         this.subjects.push(subject);
-        saveSubjects(this.subjects);
+        await saveSubjects(this.subjects);
     }
 
     async getSubjects(): Promise<Subject[]> {

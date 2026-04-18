@@ -7,8 +7,9 @@ export class StudentService{
     async addStudent(name: string, email: string, years: number, career: string, state: "active" | "inactive"): Promise<void> {
         this.students = await loadStudents();
 
-        
-        const newId = this.students.length + 1; // si no hay estudiantes length es 0, entonces el id del nuevo estudiante será 0, si hay 1 estudiante, el id del nuevo estudiante será 1, y así sucesivamente. 
+        const newId = this.students.length > 0
+        ? Math.max(...this.students.map(s => s.id)) + 1
+        : 1;
         const student: Student = { id: newId, name, email, years, career, state };
 
         this.students.push(student);

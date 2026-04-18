@@ -37,28 +37,45 @@
     <!-- FILTROS -->
     <section class="filters">
       <input id="buscar-curso" type="text" placeholder="Buscar por nombre o sigla..." />
-      
+      <button id="search-btn">Buscar</button>
+      <small id="search-error"></small>
       <select id="filtro-estado-curso">
-        <option value="">Todos</option>
-        <option value="disponible">Disponibles</option>
-        <option value="cerrado">Cerrados</option>
+        <option value="all">Todos</option>
+        <option value="available">Disponibles</option>
+        <option value="closed">Cerrados</option>
       </select>
+      <button id="clear-filters">Limpiar Filtros</button>
     </section>
 
     <!-- FORMULARIO -->
     <section>
       <form id="form-curso" class="form">
-        <input name="nombre" type="text" placeholder="Nombre del curso" required />
-        <input name="sigla" type="text" placeholder="Sigla" required />
-        <input name="docente" type="text" placeholder="Docente" required />
-        <input name="cupoMaximo" type="number" placeholder="Cupo máximo" required />
+        <div class="field">
+          <label for="name">Nombre Curso</label>
+          <input id="name" type="text" placeholder="Nombre del curso" />
+          <small class="error" id="error-name"></small>
+        </div>
 
-        <select name="estado">
-          <option value="disponible">Disponible</option>
-          <option value="cerrado">Cerrado</option>
-        </select>
+        <div class="field">
+          <label for="code">Sigla</label>
+          <input id="code" type="text" placeholder="Sigla" />
+          <small class="error" id="error-code"></small>
+        </div>
+
+        <div class="field">
+          <label for="docente">Docente</label>
+          <input id="docente" type="text" placeholder="Nombre del docente" />
+          <small class="error" id="error-docente"></small>
+        </div>
+
+        <div class="field">
+          <label for="cupo">Cupo</label>
+          <input id="cupo" type="text" placeholder="Cupo" />
+          <small class="error" id="error-cupo"></small>
+        </div>
 
         <button type="submit">Guardar</button>
+        <button type="button" id="clear-form">Limpiar Formulario</button>
       </form>
     </section>
 
@@ -72,7 +89,6 @@
             <th>Docente</th>
             <th>Cupo</th>
             <th>Estado</th>
-            <th>Acciones</th>
           </tr>
         </thead>
 
@@ -82,6 +98,51 @@
 
   </main>
 
+</div>
+
+<script type="module" src="/dist/UI/Subjects.render.js"></script>
+
+<!-- ===== MODAL BACKDROP ===== -->
+<div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+<!-- ===== MODAL DELETE ===== -->
+<div id="delete-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Confirmar eliminación</h3>
+    <p>¿Seguro que deseas eliminar este curso?</p>
+
+    <div class="modal-actions">
+      <button id="cancel-delete">Cancelar</button>
+      <button id="confirm-delete" class="danger">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL EDIT ===== -->
+<div id="edit-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Editar Curso</h3>
+
+    <form id="edit-form" class="form">
+      <input id="edit-name" placeholder="Nombre" required />
+      <input id="edit-code" placeholder="Sigla" required />
+      <input id="edit-docente" placeholder="Docente" required />
+      <input id="edit-cupo" type="number" placeholder="Cupo máximo" required />
+      
+
+      <!-- AQUÍ SÍ VA EL ESTADO -->
+      <select id="edit-state">
+        <option value="available">Disponible</option>
+        <option value="closed">Cerrado</option>
+      </select>
+
+      <div class="modal-actions">
+        <button type="submit">Guardar</button>
+        <button type="button" id="cancel-edit">Cancelar</button>
+        
+      </div>
+    </form>
+  </div>
 </div>
 
 
