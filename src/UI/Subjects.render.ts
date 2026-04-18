@@ -262,19 +262,26 @@ async function handleSearch() {
     errorSearch.textContent = "";
 
     const name = searchInput.value.trim();
+    const code = searchInput.value.trim();
     const students = await service.getSubjects();
 
-    const found = students.filter(s => 
+    const found1 = students.filter(s => 
         s.name.toLowerCase().includes(name.toLowerCase())
     );
 
-    if (found.length === 0) {
+    const found2 = students.filter(s => 
+        s.code.toLowerCase().includes(code.toLowerCase())
+    );
+
+    if (found1.length === 0 && found2.length === 0) {
         errorSearch.textContent = "Curso(s) no encontrado(s)";
         setTimeout(() => errorSearch.textContent = "", 3000);
         return;
     }
-
-    renderSubjects(found);
+    else{
+        if(found1.length > 0) renderSubjects(found1);
+        if(found2.length > 0) renderSubjects(found2);
+    }
 }
 
 searchInput.addEventListener("keydown", (e) => {

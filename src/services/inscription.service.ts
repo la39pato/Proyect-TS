@@ -1,22 +1,29 @@
 import type { Inscription } from '../models/Inscriptions.js';
 import { saveInscriptions, loadInscriptions, loadStudents, loadSubjects } from '../utils/storage.js';
 export class InscriptionService{
-    private index: number = 0;
     private inscriptions: Inscription[] = [];
 
     async addInscription(studentid: number, subjectid: number): Promise<void> {
-
-        const inscription: Inscription = { id: this.index++, student_id: studentid, subject_id: subjectid, date: new Date(), status: 'pending' };
         this.inscriptions = await loadInscriptions();
+        const newId = this.inscriptions.length > 0
+        ? Math.max(...this.inscriptions.map(i => i.id)) + 1
+        : 1;
+        const inscription: Inscription = { id: newId, student_id: studentid, subject_id: subjectid, date: new Date(), status: 'pending' };
         this.inscriptions.push(inscription);
         saveInscriptions(this.inscriptions);
     }
 
     async getInscriptions(): Promise<Inscription[]> {
         this.inscriptions = await loadInscriptions();
+
+        // 🔥 CONVERTIR STRING → DATE
+        this.inscriptions = this.inscriptions.map(i => ({
+            ...i,
+            date: new Date(i.date)
+        }));
+
         return this.inscriptions;
     }
-
     async updateInscription(updatedInscription: Inscription): Promise<void> {
         this.inscriptions = await loadInscriptions();
         const index = this.inscriptions.findIndex(inscription => inscription.id === updatedInscription.id);
@@ -24,12 +31,6 @@ export class InscriptionService{
             this.inscriptions[index] = updatedInscription;
             saveInscriptions(this.inscriptions);
         }
-    }
-
-    async deleteInscription(inscriptionId: number): Promise<void> {
-        this.inscriptions = await loadInscriptions();
-        this.inscriptions = this.inscriptions.filter(inscription => inscription.id !== inscriptionId);
-        saveInscriptions(this.inscriptions);
     }
 
     async changeInscriptionStatus(inscriptionId: number, newStatus: 'pending' | 'approved' | 'rejected'): Promise<void> {

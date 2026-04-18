@@ -2,75 +2,107 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscripciones</title>
-
   <link rel="stylesheet" href="../styles/css/main.css">
 </head>
 
 <body>
-
 <div class="app">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <h2>Académico</h2>
-
     <nav>
-      <a href="index.html">Inicio</a>
-      <a href="estudiantes.html">Estudiantes</a>
-      <a href="cursos.html">Cursos</a>
-      <a href="inscripciones.html" class="active">Inscripciones</a>
-      <a href="dashboard.html">Dashboard</a>
+      <a href="./index.html">Inicio</a>
+      <a href="./estudiantes.html">Estudiantes</a>
+      <a href="./cursos.html">Cursos</a>
+      <a href="./inscripciones.html" class="active">Inscripciones</a>
+      <a href="./dashboard.html">Dashboard</a>
     </nav>
 
-    <button id="toggle-dark">Modo oscuro</button>
+    <button id="toggle-dark" class="btn dark-toggle">🌙 Modo oscuro</button>
   </aside>
-  <script type="module" src="/dist/UI/main.js"></script>
 
-  <!-- MAIN -->
   <main class="main">
+    <h1>Gestión de Inscripciones</h1>
 
-    <header class="header">
-      <h1>Gestión de Inscripciones</h1>
-    </header>
+    <!-- MENSAJE -->
+    <div id="message" class="message"></div>
 
-    <!-- FORMULARIO -->
-    <section>
-      <form id="form-inscripcion" class="form inscripcion-form">
+    <section class="panel-container">
 
-        <select id="select-estudiante" required>
-          <option value="">Seleccionar estudiante</option>
-        </select>
+      <!-- ESTUDIANTES -->
+      <div class="panel">
+        <h3>Estudiantes</h3>
 
-        <select id="select-curso" required>
-          <option value="">Seleccionar curso</option>
-        </select>
+        <div class="search-box">
+          <input id="search-student" placeholder="Buscar..." />
+          <button class="btn primary" id="btn-search-student">Buscar</button>
+          <button class="btn ghost" id="clear-student">Limpiar</button>
+        </div>
 
-        <button type="submit">Inscribir</button>
-      </form>
+        <div id="list-students" class="list"></div>
+      </div>
+
+      <!-- CURSOS -->
+      <div class="panel">
+        <h3>Cursos</h3>
+
+        <div class="search-box">
+          <input id="search-subject" placeholder="Buscar..." />
+          <button class="btn primary" id="btn-search-subject">Buscar</button>
+          <button class="btn ghost" id="clear-subject">Limpiar</button>
+        </div>
+
+        <div id="list-subjects" class="list"></div>
+      </div>
+
+      <!-- ACCIONES -->
+      <div class="panel actions">
+        <button id="btn-inscribir" class="btn success">Inscribir</button>
+      </div>
+
+    </section>
+
+    <!-- FILTROS -->
+    <section class="filters">
+      <input id="search-ins-student" placeholder="Buscar estudiante">
+      <input id="search-ins-subject" placeholder="Buscar curso">
+      <button class="btn primary" id="btn-search-ins">Buscar</button>
+      <button class="btn ghost" id="clear-ins">Limpiar</button>
     </section>
 
     <!-- TABLA -->
-    <section>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Estudiante</th>
-            <th>Curso</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-
-        <tbody id="tabla-inscripciones"></tbody>
-      </table>
-    </section>
+    <table>
+      <thead>
+        <tr>
+          <th>Estudiante</th>
+          <th>Carrera</th>
+          <th>Curso</th>
+          <th>Docente</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+    </table>
 
   </main>
-
 </div>
 
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Confirmar eliminación</h3>
+    <p id="modal-text">¿Seguro que quieres eliminar?</p>
 
+    <div class="modal-actions">
+      <button id="modal-cancel" class="btn ghost">Cancelar</button>
+      <button id="modal-confirm" class="btn danger">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/dist/UI/Inscriptions.render.js"></script>
 </body>
 </html>

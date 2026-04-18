@@ -1,7 +1,6 @@
 import type { Student } from '../models/Students.js';
 import { saveStudents, loadStudents } from '../utils/storage.js';
 export class StudentService{
-    private index: number = 0;
     private students: Student[] = [];
 
     async addStudent(name: string, email: string, years: number, career: string, state: "active" | "inactive"): Promise<void> {
